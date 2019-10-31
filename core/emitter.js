@@ -7,12 +7,12 @@ const EVENTS = ['selectionchange', 'mousedown', 'mouseup', 'click'];
 
 EVENTS.forEach(eventName => {
   document.addEventListener(eventName, (...args) => {
-    Array.from(document.querySelectorAll('.ql-container')).forEach(node => {
-      const quill = instances.get(node);
+    instances.forEach(instance=>{
+      const quill = instance
       if (quill && quill.emitter) {
         quill.emitter.handleDOM(...args);
       }
-    });
+    })
   });
 });
 
