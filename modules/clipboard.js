@@ -13,13 +13,7 @@ import Quill from '../core/quill';
 import logger from '../core/logger';
 import Module from '../core/module';
 
-import { AlignAttribute, AlignStyle } from '../formats/align';
-import { BackgroundStyle } from '../formats/background';
 import CodeBlock from '../formats/code';
-import { ColorStyle } from '../formats/color';
-import { DirectionAttribute, DirectionStyle } from '../formats/direction';
-import { FontStyle } from '../formats/font';
-import { SizeStyle } from '../formats/size';
 
 const debug = logger('quill:clipboard');
 
@@ -40,25 +34,8 @@ const CLIPBOARD_CONFIG = [
   ['style', matchIgnore],
 ];
 
-const ATTRIBUTE_ATTRIBUTORS = [AlignAttribute, DirectionAttribute].reduce(
-  (memo, attr) => {
-    memo[attr.keyName] = attr;
-    return memo;
-  },
-  {},
-);
-
-const STYLE_ATTRIBUTORS = [
-  AlignStyle,
-  BackgroundStyle,
-  ColorStyle,
-  DirectionStyle,
-  FontStyle,
-  SizeStyle,
-].reduce((memo, attr) => {
-  memo[attr.keyName] = attr;
-  return memo;
-}, {});
+const ATTRIBUTE_ATTRIBUTORS = []
+const STYLE_ATTRIBUTORS = []
 
 class Clipboard extends Module {
   constructor(quill, options) {
